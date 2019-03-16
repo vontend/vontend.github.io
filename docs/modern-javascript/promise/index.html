@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Promise · Sổ tay React</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Promises là một cách để xử lý async mà không cần viết nhiều callback trong code.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Promise · Sổ tay React"/><meta property="og:type" content="website"/><meta property="og:url" content="https://your-docusaurus-test-site.com/index.html"/><meta property="og:description" content="&lt;p&gt;Promises là một cách để xử lý async mà không cần viết nhiều callback trong code.&lt;/p&gt;
+"/><meta property="og:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://your-docusaurus-test-site.com/blog/atom.xml" title="Sổ tay React Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://your-docusaurus-test-site.com/blog/feed.xml" title="Sổ tay React Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/docusaurus.svg" alt="Sổ tay React"/><h2 class="headerTitleWithLogo">Sổ tay React</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/intro/intro" target="_self">React</a></li><li class=""><a href="/docs/doc4" target="_self">Javascript</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Javascript hiện đại</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Giới thiệu</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/intro/intro">Giới thiệu React</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/setup">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/next">Tiếp theo</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Javascript hiện đại</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/variable">Biến (Variable)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/arrow-function">Arrow Function (Hàm mũi tên)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/rest-and-spread">Rest and spread</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/object-and-array-destructing">Trích xuất từ mảng và object</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/template-literals">Template literals</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/class">Class</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/callback">Callback</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/modern-javascript/promise">Promise</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/async-await">Async/Await</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/module">Module</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">React - Các khái niệm</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/react-concepts/single-page-application">Single Page Application</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Promise</h1></header><article><div><span><p>Promises là một cách để xử lý async mà không cần viết nhiều callback trong code.</p>
+<p>Mặc dù xuất hiện nhiều năm trước, nhưng đến ES2015 Promise được chuẩn hóa và giới thiệu và bây giờ đã được thay thế bằng async trong ES2017.</p>
+<p>Các hàm Async sử dụng API của các promise, vì vậy rất dễ học. Sau này khi bạn viết code bạn sẽ thich dùng các hàm async hơn là promise.</p>
+<h2><a class="anchor" aria-hidden="true" id="promise-lam-việc-như-thế-nao"></a><a href="#promise-lam-việc-như-thế-nao" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Promise làm việc như thế nào</h2>
+<p>Khi một Promise được gọi, nó bắt đầu vào trạng thái chờ xử lý. Điều này có nghĩa là hàm được gọi sẽ tiếp tục thực thi, trong khi nó chờ Promise thực hiện xong chức năng và cung cấp cho hàm được gọi một số những phản hồi.</p>
+<p>Tại thời điểm này, hàm được gọi chờ thông tin trả về từ Promise trong một trạng thái resolved hoặc rejected, như bạn đã biết Javascript là bất đồng bộ, vì vậy hàm tiếp tục thực thi trong khi Promise đang làm việc.</p>
+<h2><a class="anchor" aria-hidden="true" id="ai-đang-dung-promise"></a><a href="#ai-đang-dung-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ai đang dùng promise</h2>
+<p>Ngoài code và thư viện của riêng bạn, Promise được sử dụng bởi các chuẩn web API hiện đại như Fetch hoặc Service Worker.</p>
+<p>Không giống như Javascript hiện đại, chính bạn sẽ không sử dụng Promise, hãy tìm hiểu nhé:</p>
+<h2><a class="anchor" aria-hidden="true" id="tạo-một-promise"></a><a href="#tạo-một-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo một promise</h2>
+<pre><code class="hljs">let done = true
+const isItDoneYet = new Promise((resolve, reject) =&gt; {
+  if (done) {
+    const workDone = 'Here is the thing I built'
+    resolve(workDone)
+  } else {
+    const why = 'Still working on something else'
+    reject(why)
+  }
+})
+</code></pre>
+<p>Như bạn thấy đấy, Promise kiểm tra <code>done</code> và nếu nó là <code>true</code> sẽ trả về một <em>resolved promise</em>, nếu không thì trả về <em>reject promise</em>.</p>
+<p>Sử dụng resolve và reject ta có thể giao tiếp ngược một giá trị, trong trường hợp trên chúng ta chỉ trả về một string nhưng bạn có thể trả về gì tùy ý, Object, Array, v.v...</p>
+<h2><a class="anchor" aria-hidden="true" id="xử-lý-promise"></a><a href="#xử-lý-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Xử lý promise</h2>
+<p>Ở trên ta đã tạo Promise vậy giờ làm sao xử lý nó ?</p>
+<pre><code class="hljs">const isItDoneYet = new Promise()
+//...
+const checkIfItsDone = () =&gt; {
+  isItDoneYet
+    .then(ok =&gt; {
+      console.log(ok)
+    })
+    .catch(err =&gt; {
+      console.error(err)
+    })
+}
+</code></pre>
+<p>Chạy <code>checkIfItsDone()</code> sẽ chạy promise <code>isItDoneYet()</code> và sẽ chờ resolve bằng cách sử dụng hàm callback <code>.then()</code> và nếu có lỗi sẽ xử lý bằng hàm callback <code>catch()</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="chuỗi-promise"></a><a href="#chuỗi-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chuỗi promise</h2>
+<p>Một promise co thể trả về một promise tạo thành một chuỗi promise.</p>
+<p>Một ví dụ điển hình của chuỗi promise là Fetch API, một lớp trên cùng của XMLHttpRequest API, một công cụ để lấy dữ liệu từ mạng mà xếp hàng đợi (queue) các promise để thực thi khi dữ liệu trả về.</p>
+<p>Fetch API là một cơ chế dựa trên promise và gọi <code>fetch()</code> tương đương với việc bạn định nghĩa một promise bằng cú pháp <code>new Promise()</code>.</p>
+<p>Ví dụ:</p>
+<pre><code class="hljs">const status = response =&gt; {
+  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) {
+    return Promise.resolve(response)
+  }
+  return Promise.reject(new Error(response.statusText))
+}
+const json = response =&gt; response.json()
+fetch('/todos.json')
+  .then(status)
+  .then(json)
+  .then(data =&gt; {
+    console.log('Request succeeded with JSON response', data)
+  })
+  .catch(error =&gt; {
+    console.log('Request failed', error)
+  })
+</code></pre>
+<p>Trong ví dụ này bạn gọi <code>fetch()</code> để lấy danh cách các Task cần làm từ file <code>todos.json</code> và tạo một chuỗi các promise.</p>
+<p>Chạy <code>fetch()</code> sẽ trả về <code>response</code> chứa nhiều thuộc tính, chúng ta sẽ tham chiếu:</p>
+<ul>
+<li>status: Một mã trạng thái HTTP.</li>
+<li>statusText: Một thông điệp, là <code>OK</code> nếu request là thành công.</li>
+</ul>
+<p><code>response</code> cũng là một phương thức <code>json()</code> sẽ trả về một promise được xử lý với phần nội dung của body và chuyển thành JSON.</p>
+<p>Vì vậy với những tiền đề đó, điều gì sẽ xảy ra? promise đầu tiên trong chuỗi mà chúng ta định nghĩa, là <code>status()</code>, sẽ kiểm tra xem trạng thái trả về và nếu thất bại (mã trả về không thuộc 200-299), sẽ từ chối promise.</p>
+<p>Thao tác này sẽ khiến chuỗi promise bỏ qua tất cả các promise được liệt kê và di chuyển đến hàm callback cuối cùng là <code>catch()</code> và in ra console rằng request đã fail.</p>
+<p>Nếu thành công thì sao? nó sẽ gọi đến hàm <code>json()</code> mà ta đã định nghĩa. Vì promise trước đó, khi thành công sẽ trả về <code>response</code> object dùng làm đầu vào cho promise thứ hai.</p>
+<p>Trong trường hợp này, chúng ta trả về một data JSON đã được xử lý và promise thứ ba nhận trực tiếp JSON này:</p>
+<pre><code class="hljs">.then((data) =&gt; {
+  console.log('Request succeeded with JSON response', data)
+})
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="xử-lý-lỗi"></a><a href="#xử-lý-lỗi" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Xử lý lỗi</h2>
+<p>Trong các ví dụ trên đây chúng ta có một callbach <code>catch()</code> được thêm vào cuối chuỗi promise. Khi mà bất kỳ promise nào bên trong chuỗi thất bại và gây ra lỗi hoặc reject promise, tiến trình sẽ chuyển đến câu lệnh <code>catch()</code> gần nhất cuối chuỗi.</p>
+<pre><code class="hljs">new Promise((resolve, reject) =&gt; {
+  throw new Error('Error')
+}).catch(err =&gt; {
+  console.error(err)
+})
+// or
+new Promise((resolve, reject) =&gt; {
+  reject('Error')
+}).catch(err =&gt; {
+  console.error(err)
+})
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="hang-lỗi"></a><a href="#hang-lỗi" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hàng lỗi</h3>
+<p>Nếu bên trong <code>catch()</code> lại gây ra lỗi thì bạn có thể tiếp tục thêm một hàm <code>catch()</code>.</p>
+<pre><code class="hljs">new Promise((resolve, reject) =&gt; {
+  throw new Error('Error')
+})
+  .catch(err =&gt; {
+    throw new Error('Error')
+  })
+  .catch(err =&gt; {
+    console.error(err)
+  })
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tổ-chức-cac-promise"></a><a href="#tổ-chức-cac-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tổ chức các promise</h2>
+<h3><a class="anchor" aria-hidden="true" id="bố-tri-cac-promises-với-promiseall"></a><a href="#bố-tri-cac-promises-với-promiseall" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bố trí các promises với Promise.all()</h3>
+<p>Nếu bạn muốn đồng bộ hóa các promise khác nhau, <code>Promise.all()</code> sẽ giúp bạn định nghĩa một danh sách các promise và thực thi một điều gì đó khi tất cả chúng được xử lý xong.</p>
+<pre><code class="hljs">const f1 = fetch('/something.json')
+const f2 = fetch('/something2.json')
+Promise.all([f1, f2])
+  .then(res =&gt; {
+    console.log('Array of results', res)
+  })
+  .catch(err =&gt; {
+    console.error(err)
+  })
+</code></pre>
+<p>Cú pháp <strong>destructing</strong> của ES6 cho phép bạn thực hiện điều này nhanh chóng</p>
+<pre><code class="hljs">Promise.all([f1, f2]).then(([res1, res2]) =&gt; {
+  console.log('Results', res1, res2)
+})
+</code></pre>
+<p>Tất nhiên bạn không bị giới hạn trong việc sử dụng <code>fetch()</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="bố-tri-promise-với-promiserace"></a><a href="#bố-tri-promise-với-promiserace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bố trí promise với Promise.race()</h3>
+<p><code>Promise.race()</code> sẽ chạy ngay khi một trong những promise mà bạn truyền vào được xử lý xong và nó chạy hàm callback được gán chỉ một lần với kết quả của promise đầu tiên trả về.</p>
+<pre><code class="hljs">const promiseOne = new Promise((resolve, reject) =&gt; {
+  setTimeout(resolve, 500, 'one')
+})
+const promiseTwo = new Promise((resolve, reject) =&gt; {
+  setTimeout(resolve, 100, 'two')
+})
+Promise.race([promiseOne, promiseTwo]).then(result =&gt; {
+  console.log(result) // 'two'
+})
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/modern-javascript/callback"><span class="arrow-prev">← </span><span>Callback</span></a><a class="docs-next button" href="/docs/modern-javascript/async-await"><span>Async/Await</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#promise-lam-việc-như-thế-nao">Promise làm việc như thế nào</a></li><li><a href="#ai-đang-dung-promise">Ai đang dùng promise</a></li><li><a href="#tạo-một-promise">Tạo một promise</a></li><li><a href="#xử-lý-promise">Xử lý promise</a></li><li><a href="#chuỗi-promise">Chuỗi promise</a></li><li><a href="#xử-lý-lỗi">Xử lý lỗi</a><ul class="toc-headings"><li><a href="#hang-lỗi">Hàng lỗi</a></li></ul></li><li><a href="#tổ-chức-cac-promise">Tổ chức các promise</a><ul class="toc-headings"><li><a href="#bố-tri-cac-promises-với-promiseall">Bố trí các promises với Promise.all()</a></li><li><a href="#bố-tri-promise-với-promiserace">Bố trí promise với Promise.race()</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/docusaurus.svg" alt="Sổ tay React" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source ß" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

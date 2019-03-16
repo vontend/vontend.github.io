@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Module · Sổ tay React</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;ES Module là chuẩn của ECMAScript để làm việc với các module.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Module · Sổ tay React"/><meta property="og:type" content="website"/><meta property="og:url" content="https://your-docusaurus-test-site.com/index.html"/><meta property="og:description" content="&lt;p&gt;ES Module là chuẩn của ECMAScript để làm việc với các module.&lt;/p&gt;
+"/><meta property="og:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://your-docusaurus-test-site.com/blog/atom.xml" title="Sổ tay React Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://your-docusaurus-test-site.com/blog/feed.xml" title="Sổ tay React Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/docusaurus.svg" alt="Sổ tay React"/><h2 class="headerTitleWithLogo">Sổ tay React</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/intro/intro" target="_self">React</a></li><li class=""><a href="/docs/doc4" target="_self">Javascript</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Javascript hiện đại</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Giới thiệu</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/intro/intro">Giới thiệu React</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/setup">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/next">Tiếp theo</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Javascript hiện đại</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/variable">Biến (Variable)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/arrow-function">Arrow Function (Hàm mũi tên)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/rest-and-spread">Rest and spread</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/object-and-array-destructing">Trích xuất từ mảng và object</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/template-literals">Template literals</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/class">Class</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/callback">Callback</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/promise">Promise</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/async-await">Async/Await</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/modern-javascript/module">Module</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">React - Các khái niệm</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/react-concepts/single-page-application">Single Page Application</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Module</h1></header><article><div><span><p>ES Module là chuẩn của ECMAScript để làm việc với các module.</p>
+<p>Trong khi Node.js sử dụng chuẩn CommonJS trong nhiều năm, các trình duyệt chưa bao giờ có được một hệ thống module, vì mọi quyết định như là hệ thống module phải được chuẩn hóa trước bởi ECMAScript trước khi các trình duyệt thực hiện tích hợp.</p>
+<p>Module tuyệt vời ở chỗ nó cho phép bạn gói gọn và sắp xếp các chức năng trong một file javascript khác, dạng như thư viện. Nếu làm việc với composer của PHP có lẽ bạn đã biết điều này từ lâu rồi.</p>
+<h2><a class="anchor" aria-hidden="true" id="cu-phap-module"></a><a href="#cu-phap-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cú pháp Module</h2>
+<pre><code class="hljs">import package from 'module-name'
+</code></pre>
+<p>trong khi chuẩn CommonJS sử dụng:</p>
+<pre><code class="hljs">const package = require('module-name')
+</code></pre>
+<p>Một module là một file Javascript mà nó xuất (export) một hay nhiều giá trị khác nhau (object, hàm, biến) sử dụng từ khóa <code>export</code>. Ví dụ trong module sau đây <code>export</code> một hàm trả một string về chữ hoa:</p>
+<blockquote>
+<p>uppercase.js</p>
+</blockquote>
+<pre><code class="hljs">export default str =&gt; str.toUpperCase()
+</code></pre>
+<p>Trong ví dụ này, module được định nghĩa theo cách mà mình xin gọi là <em>module đơn</em>, do đó nó có thể là một hàm anonymous (không cần tên). Ngược lại, nó cần một tên để phân biệt với các phần export khác của module.</p>
+<p>Bây giờ bất kỳ module Javascript nào khác đều có thể sử dụng chức năng của uppercase.js bằng cách import nó.</p>
+<p>Một file HTML cũng có thể import một module bằng cách:</p>
+<pre><code class="hljs">&lt;script type=&quot;module&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>Chú ý: phương pháp import module này giống như bạn load script bằng cách <code>defer</code>.</p>
+<p>Một điểm cần lưu ý khác là bất kỳ script nào được load với <code>type=&quot;module&quot;</code> đều bật strict mode.</p>
+</blockquote>
+<p>Trong ví dụ này, <code>uppercase.js</code> được định nghĩa <strong>default export</strong>, vì vậy khi chúng ta import nó, chúng ta được quyền gán cho nó một tên bất kỳ.</p>
+<pre><code class="hljs">import toUpperCase from './uppercase.js'
+</code></pre>
+<p>và dùng chúng:</p>
+<pre><code class="hljs">toUpperCase('test') //TEST
+</code></pre>
+<p>Bạn cũng có thể import một đường dẫn tuyệt đối để tham chiếu một module trên một domain khác.</p>
+<pre><code class="hljs">import toUpperCase from 'https://flavio-es-modules-example.glitch.me/uppercase.js'
+</code></pre>
+<p>Cú pháp sau đây đúng:</p>
+<pre><code class="hljs">import { foo } from '/uppercase.js'
+import { foo } from '../uppercase.js'
+</code></pre>
+<p>Và sai:</p>
+<pre><code class="hljs">import { foo } from 'uppercase.js'
+import { foo } from 'utils/uppercase.js'
+</code></pre>
+<p>Chỉ có thể là tuyệt đối hoặc bắt đầu với <code>./</code> <code>\/</code> trước tên file.</p>
+<h2><a class="anchor" aria-hidden="true" id="những-cach-import-export-khac"></a><a href="#những-cach-import-export-khac" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Những cách import, export khác</h2>
+<p>Hãy nhìn lại ví dụ phía trên:</p>
+<pre><code class="hljs">export default str =&gt; str.toUpperCase()
+</code></pre>
+<p>Module này tạo một default export. Tuy nhiên bạn có thể export nhiều nhứ hơn nữa:</p>
+<pre><code class="hljs">const a = 1
+const b = 2
+const c = 3
+export { a, b, c }
+</code></pre>
+<p>Khi import có thể import tất cả sử dụng:</p>
+<pre><code class="hljs">import * from 'module'
+</code></pre>
+<p>Hoặc chỉ vài giá trị sử dụng cấu trúc destructing:</p>
+<pre><code class="hljs">import { a } from 'module'
+import { a, b } from 'module'
+</code></pre>
+<p>Bạn có quyền thay đổi tên biến bằng cách sử dụng từ khóa <code>as</code></p>
+<pre><code class="hljs">import { a, b as two } from 'module'
+</code></pre>
+<p>Bạn có thể import default, không default trong cùng một cú pháp như các file React component thường bắt đầu:</p>
+<pre><code class="hljs">import React, { Component } from 'react'
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="cors"></a><a href="#cors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CORS</h2>
+<p>Module được import từ một domain khác sử dụng <a href="https://flaviocopes.com/cors/">CORS</a>, chúng phải có một CORS header đúng đắn để cho phép cross-site loading (như <code>Access-Control-Allow-Origin: *</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="nếu-trinh-duyệt-khong-hỗ-trợ"></a><a href="#nếu-trinh-duyệt-khong-hỗ-trợ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nếu trình duyệt không hỗ trợ:</h2>
+<p>Sử dụng sự kết hợp của <code>type=&quot;module&quot;</code> và <code>nomodule</code>:</p>
+<pre><code class="hljs">&lt;script type=&quot;module&quot; src=&quot;module.js&quot;&gt;&lt;/script&gt;
+&lt;script nomodule src=&quot;fallback.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>ES Module là một phần tính năng lớn nhất trong ES6 được giới thiệu đến các trình duyệt hiện đại. Nó là một phần của ES6 nhưng con đường thực hiện nó là rất dài.</p>
+<p>Chúng ta hiện có thể sử dụng nó. Nhưng cần nhớ rằng có hơn một vài module sẽ lập tức gây ra vấn đề về hiệu năng đối với ứng dụng của chúng ta bởi vì trình duyệt cần làm thêm một bước trước khi thực hiện chạy chương trình.</p>
+<p>Webpack là một lựa chọn an toàn ngay cả khi trình duyệt có tích hợp module. Các sản phẩm sau này bạn làm với React hay React Native thì webpack là một điều không thể thiếu. Nói một cách đơn giản <strong><em>Webpack là module loader đóng gói tất cả module vào một vài tập tin</em></strong> Chúng ta sẽ còn gặp lại webpack trên website này.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/modern-javascript/async-await"><span class="arrow-prev">← </span><span>Async/Await</span></a><a class="docs-next button" href="/docs/react-concepts/single-page-application"><span>Single Page Application</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#cu-phap-module">Cú pháp Module</a></li><li><a href="#những-cach-import-export-khac">Những cách import, export khác</a></li><li><a href="#cors">CORS</a></li><li><a href="#nếu-trinh-duyệt-khong-hỗ-trợ">Nếu trình duyệt không hỗ trợ:</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/docusaurus.svg" alt="Sổ tay React" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source ß" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Async/Await · Sổ tay React</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Javascript đã phát triển một cách nhanh chóng, từ hàm callback đến promise (ES2015) và kể từ (ES2017) bất đồng bộ trong Javascript càng trở nên đơn giản hơn với async/await.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Async/Await · Sổ tay React"/><meta property="og:type" content="website"/><meta property="og:url" content="https://your-docusaurus-test-site.com/index.html"/><meta property="og:description" content="&lt;p&gt;Javascript đã phát triển một cách nhanh chóng, từ hàm callback đến promise (ES2015) và kể từ (ES2017) bất đồng bộ trong Javascript càng trở nên đơn giản hơn với async/await.&lt;/p&gt;
+"/><meta property="og:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://your-docusaurus-test-site.com/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://your-docusaurus-test-site.com/blog/atom.xml" title="Sổ tay React Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://your-docusaurus-test-site.com/blog/feed.xml" title="Sổ tay React Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/docusaurus.svg" alt="Sổ tay React"/><h2 class="headerTitleWithLogo">Sổ tay React</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/intro/intro" target="_self">React</a></li><li class=""><a href="/docs/doc4" target="_self">Javascript</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Javascript hiện đại</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Giới thiệu</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/intro/intro">Giới thiệu React</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/setup">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/intro/next">Tiếp theo</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Javascript hiện đại</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/variable">Biến (Variable)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/arrow-function">Arrow Function (Hàm mũi tên)</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/rest-and-spread">Rest and spread</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/object-and-array-destructing">Trích xuất từ mảng và object</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/template-literals">Template literals</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/class">Class</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/callback">Callback</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/promise">Promise</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/modern-javascript/async-await">Async/Await</a></li><li class="navListItem"><a class="navItem" href="/docs/modern-javascript/module">Module</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">React - Các khái niệm</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/react-concepts/single-page-application">Single Page Application</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Async/Await</h1></header><article><div><span><p>Javascript đã phát triển một cách nhanh chóng, từ hàm callback đến promise (ES2015) và kể từ (ES2017) bất đồng bộ trong Javascript càng trở nên đơn giản hơn với async/await.</p>
+<p>Các hàm Async được kết hợp từ các promise và generator. Về cơ bản chúng là một level trừu tượng hóa ở mức cao hơn so với promise. Tôi xin nhắc lại <strong>async/await được xây dựng trên promise.</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="tại-sao-async-await-được-giới-thiệu"></a><a href="#tại-sao-async-await-được-giới-thiệu" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tại sao async/await được giới thiệu ?</h2>
+<p>Chúng đơn giản hóa cách viết các promise và chúng &quot;không phá vỡ giới hạn của chuỗi promise&quot; .</p>
+<p>Khi Promise được giới thiệu trong ES2015, chúng được dùng để giải quyết các vấn đề xử lý không đồng bộ và chúng đã làm được. Tuy nhiên sau 2 năm từ 2015 đến 2017, một điều rõ ràng là các promises không thể là giải pháp cuối cùng.</p>
+<p>Promise nổi tiếng giải quyết vấn đề callback hell (sự lồng nhau của quá nhiều hàm callback), nhưng sự phức tạp đến từ chính bản thân chúng, cú pháp quá phức tạp.</p>
+<p>Chúng rất tốt ở thời điểm sơ khai, có cú pháp tốt hơn đối với các developer, và bây giờ để cú pháp tốt hơn, chúng ta có các hàm async/await.</p>
+<p>Chúng tạo ra code nhìn như code đồng bộ nhưng lại là bất đồng bộ và hoàn toàn không bị chặn (non I/O blocking).</p>
+<h2><a class="anchor" aria-hidden="true" id="chung-lam-việc-như-thế-nao"></a><a href="#chung-lam-việc-như-thế-nao" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chúng làm việc như thế nào?</h2>
+<p>Một hàm async trả về một promise như ví dụ dưới đây:</p>
+<pre><code class="hljs">const doSomethingAsync = () =&gt; {
+  return new Promise(resolve =&gt; {
+    setTimeout(() =&gt; resolve('I did something'), 3000)
+  })
+}
+</code></pre>
+<p>Khi bạn muốn gọi hàm này bạn thêm một tiền tố <code>await</code> tại đầu hàm và việc gọi code sẽ dừng lại cho đến khi promise được xử lý xong hoặc từ chối. Cảnh báo: hàm client phải được định nghĩa <code>async</code>. Đây là một ví dụ:</p>
+<pre><code class="hljs">const doSomething = async () =&gt; {
+  console.log(await doSomethingAsync())
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="vi-dụ-nhanh"></a><a href="#vi-dụ-nhanh" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ví dụ nhanh</h2>
+<p>Ví dụ sau sẽ thể hiện cách mà async/await làm việc:</p>
+<pre><code class="hljs">const doSomethingAsync = () =&gt; {
+  return new Promise(resolve =&gt; {
+    setTimeout(() =&gt; resolve('I did something'), 3000)
+  })
+}
+const doSomething = async () =&gt; {
+  console.log(await doSomethingAsync())
+}
+console.log('Before')
+doSomething()
+console.log('After')
+</code></pre>
+<p>Code trên sẽ trả về:</p>
+<pre><code class="hljs">Before
+After
+I did something //after 3s
+</code></pre>
+<p>Thêm từ khóa <code>async</code> vào đầu hàm nghĩa là hàm đó sẽ trả về một promise.</p>
+<p>Đó là lý do mà hàm sau đây đúng:</p>
+<pre><code class="hljs">const aFunction = async () =&gt; {
+  return 'test'
+}
+aFunction().then(alert) // This will alert 'test'
+</code></pre>
+<p>Và đây:</p>
+<pre><code class="hljs">const aFunction = async () =&gt; {
+ return Promise.resolve('test')
+}
+aFunction().then(alert) // This will alert 'test'
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="code-sẽ-dễ-đọc-hơn"></a><a href="#code-sẽ-dễ-đọc-hơn" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code sẽ dễ đọc hơn</h2>
+<p>Bạn thấy đó, code nhìn rất đơn giản. So sánh với phiên bản sử dụng Promise với hàng loạt chuỗi và hàm callback.</p>
+<p>Đây mới chỉ là một ví dụ đơn giản, khi code của bạn phình ra, điều này là rất có lợi.</p>
+<p>Ví dụ sau chúng ta dùng Promise để tải một tập tin JSON, parse nó:</p>
+<pre><code class="hljs">const getFirstUserData = () =&gt; {
+  return fetch('/users.json') // get users list
+    .then(response =&gt; response.json()) // parse JSON
+    .then(users =&gt; users[0]) // pick first user
+    .then(user =&gt; fetch(`/users/${user.name}`)) // get user data
+    .then(userResponse =&gt; userResponse.json()) // parse JSON
+}
+</code></pre>
+<p>Phiên bản sau đây cùng chức năng dùng async/await</p>
+<pre><code class="hljs">const getFirstUserData = async () =&gt; {
+  const response = await fetch('/users.json') // get users list
+  const users = await response.json() // parse JSON
+  const user = users[0] // pick first user
+  const userResponse = await fetch(`/users/${user.name}`) // get user data
+  const userData = await userResponse.json() // parse JSON
+  return userData
+}
+getFirstUserData()
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="sử-dụng-nhiều-ham-async"></a><a href="#sử-dụng-nhiều-ham-async" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng nhiều hàm async</h2>
+<p>Các hàm async có thể sử dụng thành chuỗi rất đơn giản, cú pháp dễ đọc hơn so với dùng promise.</p>
+<pre><code class="hljs">const promiseToDoSomething = () =&gt; {
+  return new Promise(resolve =&gt; {
+    setTimeout(() =&gt; resolve('I did something'), 10000)
+  })
+}
+const watchOverSomeoneDoingSomething = async () =&gt; {
+  const something = await promiseToDoSomething()
+  return something + ' and I watched'
+}
+const watchOverSomeoneWatchingSomeoneDoingSomething = async () =&gt; {
+  const something = await watchOverSomeoneDoingSomething()
+  return something + ' and I watched as well'
+}
+watchOverSomeoneWatchingSomeoneDoingSomething().then(res =&gt; {
+  console.log(res) // I did something and I watched and I watched as well
+
+})
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="dễ-dang-debug"></a><a href="#dễ-dang-debug" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dễ dàng debug</h2>
+<p>Debug promise là rất khó bởi vì các trình debug gần như không bỏ qua code không đồng bộ.</p>
+<p>Async/await làm điều này trỏ nên dễ dàng hơn bởi vì trình biên dịch chúng chỉ đơn giản giống như code đồng bộ mà thôi.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/modern-javascript/promise"><span class="arrow-prev">← </span><span>Promise</span></a><a class="docs-next button" href="/docs/modern-javascript/module"><span>Module</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tại-sao-async-await-được-giới-thiệu">Tại sao async/await được giới thiệu ?</a></li><li><a href="#chung-lam-việc-như-thế-nao">Chúng làm việc như thế nào?</a></li><li><a href="#vi-dụ-nhanh">Ví dụ nhanh</a></li><li><a href="#code-sẽ-dễ-đọc-hơn">Code sẽ dễ đọc hơn</a></li><li><a href="#sử-dụng-nhiều-ham-async">Sử dụng nhiều hàm async</a></li><li><a href="#dễ-dang-debug">Dễ dàng debug</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/docusaurus.svg" alt="Sổ tay React" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source ß" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>
